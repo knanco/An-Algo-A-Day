@@ -35,5 +35,46 @@ function maxEI(arr, indexToStopAt) {
   return index
 }
 
+// ------------------------------//
+
+function flip2(arr, k) {
+  let i = 0
+  while (i < k) {
+    let temp = arr[k]
+    arr[k] = arr[i]
+    arr[i] = temp
+    i++
+    k--
+  }
+  return arr
+}
+
+function findMaxIndex2(arr, k) {
+  let index = 0
+  let max = -Infinity
+  for (let i = 0; i < k; i++) {
+    if (arr[i] >= max) {
+      max = arr[i]
+      index = i
+    }
+  }
+  return index
+}
+
+function pancakeSort2(arr) {
+  let i = arr.length
+  while (i > 1) {
+    let maxIndex = findMaxIndex(arr, i)
+    if (maxIndex !== i - 1) {
+      flip(arr, maxIndex)
+      flip(arr, i - 1)
+    }
+    i--
+  }
+  return arr
+}
+
 const input = [3, 1, 2, 4, 6, 5]
 console.log(pancakeSort(input))
+const input2 = [30, 10, 20, 40, 60, 50]
+console.log(pancakeSort2(input2))
